@@ -17,7 +17,7 @@ plt.show()
 def make_poly(X, deg):
     n = len(X)
     data = [np.ones(n)]
-    for d in xrange(deg):
+    for d in range(deg):
         data.append(X**(d+1))
     return np.vstack(data).T
 
@@ -63,14 +63,14 @@ def plot_train_vs_test_curves(X, Y, sample=20, max_deg=20):
     Xtrain = X[train_idx]
     Ytrain = Y[train_idx]
 
-    test_idx = [idx for idx in xrange(N) if idx not in train_idx]
+    test_idx = [idx for idx in range(N) if idx not in train_idx]
     # test_idx = np.random.choice(N, sample)
     Xtest = X[test_idx]
     Ytest = Y[test_idx]
 
     mse_trains = []
     mse_tests = []
-    for deg in xrange(max_deg+1):
+    for deg in range(max_deg+1):
         Xtrain_poly = make_poly(Xtrain, deg)
         w = fit(Xtrain_poly, Ytrain)
         Yhat_train = Xtrain_poly.dot(w)
